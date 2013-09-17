@@ -1,0 +1,13 @@
+[project]
+  name = "<%= config[:project_name] %>"
+
+# Global defaults for all decks set here.  You can
+# override these in the individual deck configuration
+# files.  
+[deck]
+
+  [author]
+    name        = "Your name here"
+    email       = "user@example.com"
+    department  = "Department of Computer Science"
+    institution = "Western University"
