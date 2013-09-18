@@ -1,7 +1,8 @@
-require "profess/version"
-
-puts "QWE"
+require 'profess/version'
+require 'profess/core_ext/hash'
+require 'profess/project'
+require 'profess/configuration'
+require 'profess/compiler'
 
 module Profess
-  # Your code goes here...
 end
