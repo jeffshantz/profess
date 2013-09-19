@@ -5,9 +5,20 @@ module Profess
 
   class Configuration
     
-    #def initialize(project_root = "")
-    #end
-    #
+    def initialize(leaf_directory = nil)
+
+      if leaf_directory
+        @config = load_cascaded(leaf_directory) 
+      else
+        @config = OpenStruct.new
+      end
+
+    end
+    
+    def method_missing(meth, *args, &block)
+      @config.send(meth, *args, &block)
+    end
+    
     private
     
     def load_file(file)
@@ -16,6 +27,8 @@ module Profess
     end
     
     def load_cascaded(leaf_directory)
+      
+      raise ArgumentError.new("'#{leaf_directory}' does not exist or is not a directory") unless File.directory?(leaf_directory)
       
       config_files = get_config_filenames(leaf_directory)
       config = {}
